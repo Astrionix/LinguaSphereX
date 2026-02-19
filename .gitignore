@@ -1,0 +1,27 @@
+# Root gitignore
+node_modules/
+.next/
+out/
+build/
+dist/
+.env*
+
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+venv/
+backend/.env
+backend/.env.*
+backend/venv/
+backend/output.log
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env*
+frontend/tsconfig.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db

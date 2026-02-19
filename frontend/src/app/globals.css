@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #06b6d4;
+  --color-accent: #8b5cf6;
+  --color-bg-dark: #020617;
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-bg: rgba(15, 23, 42, 0.6);
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom Utilities */
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl border border-white/10 shadow-2xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+
+  .glass-card {
+     @apply backdrop-blur-md border border-white/5 shadow-lg transition-all duration-300;
+     background: rgba(30, 41, 59, 0.4);
+  }
+  
+  .glass-card:hover {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .input-field {
+    @apply w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 
+    focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent
+    placeholder-slate-500 text-slate-200 transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 rounded-xl font-medium transition-all duration-200
+    bg-gradient-to-r from-cyan-500 to-blue-600 text-white
+    shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200;
+  }
+
+  /* Chat Bubbles */
+  .bubble-user {
+    @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl rounded-tr-sm shadow-md border border-blue-500/50;
+  }
+
+  .bubble-ai {
+    @apply bg-slate-800/80 text-slate-100 rounded-2xl rounded-tl-sm shadow-sm border border-white/5 backdrop-blur-sm;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-once {
+  animation: spin-once 0.5s ease-in-out;
+}
+
+/* Custom Scrollbar - outside layers to ensure high specificity */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
